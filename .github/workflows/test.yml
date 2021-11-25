@@ -1,0 +1,32 @@
+name: Test Var
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Clone source code
+        env:
+          WHOAMI: lhwarthas
+          OPENWRT_VER: R21.11.11
+          KERNEL_VERSION: 5.4.161-flippy-67+o
+          KERNEL_PKG_HOME: $GITHUB_WORKSPACE/kernel
+        working-directory: /workdir
+        run: |
+          df -hT $PWD
+          git clone $REPO_URL -b $REPO_BRANCH openwrt
+          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+          echo KERNEL_PKG_HOME
+          ls $GITHUB_WORKSPACE/kernel
