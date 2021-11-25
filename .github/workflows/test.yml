@@ -49,5 +49,5 @@ jobs:
           df -hT $PWD
           git clone $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-          echo KERNEL_PKG_HOME
+          echo $KERNEL_PKG_HOME
           ls $GITHUB_WORKSPACE/kernel
