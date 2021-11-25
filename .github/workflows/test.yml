@@ -43,11 +43,11 @@ jobs:
           WHOAMI: lhwarthas
           OPENWRT_VER: R21.11.11
           KERNEL_VERSION: 5.4.161-flippy-67+o
-          KERNEL_PKG_HOME: $GITHUB_WORKSPACE/kernel
         working-directory: /workdir
         run: |
           df -hT $PWD
           git clone $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+          export KERNEL_PKG_HOME=$GITHUB_WORKSPACE/kernel
           echo $KERNEL_PKG_HOME
           ls $KERNEL_PKG_HOME
