@@ -123,7 +123,7 @@ jobs:
         git clone https://github.com/unifreq/openwrt_packit
         cp $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz openwrt_packit
         cd openwrt_packit
-        ./mk_s905d_n1.sh
+        sudo ./mk_s905d_n1.sh
         cd output/
         gzip *.img
         mv *.img.gz $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64
