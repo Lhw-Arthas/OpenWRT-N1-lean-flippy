@@ -71,8 +71,8 @@ jobs:
         KERNEL_VERSION: 5.4.161-flippy-67+o
       run: |
         export KERNEL_PKG_HOME=$GITHUB_WORKSPACE/kernel
-        echo $KERNEL_PKG_HOME
-        ls -lah $KERNEL_PKG_HOME
+        mkdir -p /opt/kernel
+        cp $KERNEL_PKG_HOME/* /opt/kernel
         cd openwrt
         git clone https://github.com/unifreq/openwrt_packit
         cp $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz openwrt_packit
