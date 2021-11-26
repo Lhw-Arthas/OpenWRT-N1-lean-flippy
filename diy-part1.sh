@@ -20,3 +20,9 @@
 
 echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
 echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
+echo 'src-git dockerman https://github.com/lisaac/luci-app-dockerman' >>feeds.conf.default
+echo 'src-git amlogic https://github.com/ophub/luci-app-amlogic' >>feeds.conf.default
+
+#add luci-app-cpufreq
+sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
+sed -i 's/services/system/g' package/lean/luci-app-cpufreq/luasrc/controller/cpufreq.lua
