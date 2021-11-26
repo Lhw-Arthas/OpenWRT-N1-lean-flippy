@@ -65,14 +65,7 @@ jobs:
 
     - name: Build the Image
       id: build-img
-      env:
-        WHOAMI: lhwarthas
-        OPENWRT_VER: R21.11.11
-        KERNEL_VERSION: 5.4.161-flippy-67+o
       run: |
-        export KERNEL_PKG_HOME=$GITHUB_WORKSPACE/kernel
-        mkdir -p /opt/kernel
-        cp $KERNEL_PKG_HOME/* /opt/kernel
         cd openwrt
         git clone https://github.com/unifreq/openwrt_packit
         cp $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz openwrt_packit
@@ -82,6 +75,8 @@ jobs:
         echo "OPENWRT_VER=R21.11.11" >> whoami
         echo "KERNEL_VERSION=5.4.161-flippy-67+o" >> whoami
         sudo ./mk_s905d_n1.sh
+        sudo chown -R $USER:$GROUPS /workdir
+        sudo chown -R $USER:$GROUPS $GITHUB_WORKSPACE
         cd output/
         gzip *.img
         mv *.img.gz $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64
