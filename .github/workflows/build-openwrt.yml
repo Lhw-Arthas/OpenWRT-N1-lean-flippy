@@ -120,7 +120,7 @@ jobs:
         cd openwrt_packit
         echo "WHOAMI=lhwarthas" >> whoami
         echo "KERNEL_PKG_HOME=$GITHUB_WORKSPACE/kernel" >> whoami
-        echo "OPENWRT_VER=R21.11.11" >> whoami
+        echo "OPENWRT_VER=R21.12.1" >> whoami
         echo "KERNEL_VERSION=5.4.163-flippy-67+o" >> whoami
         sudo ./mk_s905d_n1.sh
         sudo chown -R $USER:$GROUPS /workdir
