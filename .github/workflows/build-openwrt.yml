@@ -120,7 +120,7 @@ jobs:
         echo "WHOAMI=lhwarthas" >> whoami
         echo "KERNEL_PKG_HOME=$GITHUB_WORKSPACE/kernel" >> whoami
         echo "OPENWRT_VER=R21.12.1" >> whoami
-        echo "KERNEL_VERSION=5.4.168-flippy-68+o" >> whoami
+        echo "KERNEL_VERSION=dtb-amlogic-5.4.188-flippy-71+o" >> whoami
         sudo ./mk_s905d_n1.sh
         sudo chown -R $USER:$GROUPS /workdir
         sudo chown -R $USER:$GROUPS $GITHUB_WORKSPACE
